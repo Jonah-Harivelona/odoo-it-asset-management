@@ -1,0 +1,47 @@
+# === Python ===
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# === Environnements virtuels ===
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# === IDEs & Editeurs ===
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# === Odoo (Spécifique) ===
+*.conf
+!*.conf.template
+*.ini
+.odoorc
+filestore/
+sessions/
+
+# === Variables d'environnement & Secrets ===
+.env
+.env.*
+!.env.example
+
+# === Bases de données & Logs ===
+*.log
+*.sqlite3
+
+# === Tests & Cache ===
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# === Système d'exploitation ===
+.DS_Store
+Thumbs.db
