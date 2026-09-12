@@ -1,4 +1,4 @@
-# Phase 3 — Choix de la solution (version condensée)
+# Phase 3 — Choix de la solution
 
 **Objectif :** convertir chaque besoin métier (BM) en décision fonctionnelle/technique, classée :
 🟢 Natif · 🔵 Configuration · 🟠 Adaptation · 🔴 Développement spécifique.
