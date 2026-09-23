@@ -4,7 +4,7 @@
     'description':'IT Asset & Maintenance Management',
     'depends': ['maintenance'],
     'data':[
-        
+        'views/maintenance_equipment_views.xml',
     ],
     'installable': True,
     'application': True,

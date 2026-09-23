@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_maintenance_equipment_form_inherit_it_asset" model="ir.ui.view">
+        <field name="name">maintenance.equipment.form.inherit.it.asset</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_view_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='category_id']" position="after">
+                <field name="asset_status"/>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="view_maintenance_equipment_list_inherit_it_asset" model="ir.ui.view">
+        <field name="name">maintenance.equipment.list.inherit.it.asset</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_view_tree"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="asset_status"
+                        widget="badge"
+                        decoration-success="asset_status == 'available'"
+                        decoration-info="asset_status == 'assigned'"
+                        decoration-warning="asset_status == 'maintenance'"
+                        decoration-danger="asset_status == 'external_repair'"
+                        decoration-muted="asset_status == 'scrapped'"
+                />
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="maintenance_equipment_kanban_inherit_asset_status" model="ir.ui.view">
+    <field name="name">maintenance.equipment.kanban.inherit.asset.status</field>
+    <field name="model">maintenance.equipment</field>
+    <field name="inherit_id" ref="maintenance.hr_equipment_view_kanban"/>
+    <field name="arch" type="xml">
+
+        <xpath expr="//t[@t-name='card']/footer/div[2]" position="before">
+            <div t-if="record.asset_status.raw_value"
+                 class="badge rounded-pill"
+                 t-attf-class="badge rounded-pill
+                    #{record.asset_status.raw_value === 'available' ? 'text-bg-success' :
+                      record.asset_status.raw_value === 'assigned' ? 'text-bg-info' :
+                      record.asset_status.raw_value === 'maintenance' ? 'text-bg-warning' :
+                      record.asset_status.raw_value === 'external_repair' ? 'text-bg-danger' :
+                      'text-bg-secondary'}">
+                <field name="asset_status"/>
+            </div>
+        </xpath>
+
+    </field>
+</record>
+
+</odoo>
