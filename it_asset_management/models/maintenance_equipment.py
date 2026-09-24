@@ -15,3 +15,8 @@ class MaintenanceEquipment(models.Model):
         default="available",
         tracking=True,
     )
+    serial_no = fields.Char(required=True)
+    _sql_constraints = [
+    ('serial_no_unique', 'unique(serial_no)',
+     "Le numéro de série doit être unique : un autre équipement utilise déjà ce numéro."),
+    ]
