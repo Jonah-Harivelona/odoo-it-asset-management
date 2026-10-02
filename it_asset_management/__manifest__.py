@@ -6,7 +6,8 @@
     'data':[
         'security/ir.model.access.csv',
         'views/maintenance_equipment_views.xml',
-        'views/it_asset_loan_views.xml'
+        'views/it_asset_loan_views.xml',
+        'data/ir_cron_warranty_alert.xml',
     ],
     'installable': True,
     'application': True,

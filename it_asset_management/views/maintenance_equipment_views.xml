@@ -10,6 +10,13 @@
             <xpath expr="//field[@name='category_id']" position="after">
                 <field name="asset_status"/>
             </xpath>
+            <xpath expr="//field[@name='warranty_date']" position="after">
+                <field name="warranty_status" widget="badge"
+                       decoration-success="warranty_status == 'valid'"
+                       decoration-warning="warranty_status == 'expiring_soon'"
+                       decoration-danger="warranty_status == 'expired'"
+                       decoration-muted="warranty_status == 'none'"/>
+            </xpath>
 
         </field>
     </record>
@@ -55,5 +62,22 @@
 
     </field>
 </record>
+
+
+    <record id="view_maintenance_equipment_search_inherit_it_asset" model="ir.ui.view">
+        <field name="name">maintenance.equipment.search.inherit.it.asset</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_view_search"/>
+        <field name="arch" type="xml">
+ 
+            <xpath expr="//filter[@name='under_maintenance']" position="after">
+                <separator/>
+                <filter string="Sous garantie" name="warranty_valid" domain="[('warranty_status', '=', 'valid')]"/>
+                <filter string="Garantie expire bientôt" name="warranty_expiring_soon" domain="[('warranty_status', '=', 'expiring_soon')]"/>
+                <filter string="Garantie expirée" name="warranty_expired" domain="[('warranty_status', '=', 'expired')]"/>
+            </xpath>
+ 
+        </field>
+    </record>
 
 </odoo>

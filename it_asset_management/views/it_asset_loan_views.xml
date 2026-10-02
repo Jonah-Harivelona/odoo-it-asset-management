@@ -14,7 +14,7 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="equipment_id"/>
+                            <field name="equipment_id" domain="[('asset_status', '=', 'available')]"/>
                             <field name="employee_id"/>
                         </group>
                         <group>

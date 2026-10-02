@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="ir_cron_warranty_expiration_alert" model="ir.cron">
+        <field name="name">IT Asset: Alerte expiration garantie</field>
+        <field name="model_id" ref="maintenance.model_maintenance_equipment"/>
+        <field name="state">code</field>
+        <field name="code">model._cron_warranty_expiration_alert()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="active">True</field>
+    </record>
+
+</odoo>
