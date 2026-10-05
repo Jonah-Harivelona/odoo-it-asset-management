@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_maintenance_request_form_inherit_it_asset" model="ir.ui.view">
+        <field name="name">maintenance.request.form.inherit.it.asset</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='maintenance_type']" position="after">
+                <field name="it_request_type" widget="radio"/>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="view_maintenance_request_search_inherit_it_asset" model="ir.ui.view">
+        <field name="name">maintenance.request.search.inherit.it.asset</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_search"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//filter[@name='my_maintenances']" position="after">
+                <separator/>
+                <filter string="Incidents IT" name="it_incident" domain="[('it_request_type', '=', 'incident')]"/>
+                <filter string="Demandes de service IT" name="it_service_request" domain="[('it_request_type', '=', 'service_request')]"/>
+            </xpath>
+
+            <xpath expr="//group/filter[@name='category']" position="after">
+                <filter string="Type de demande IT" name="group_it_request_type" domain="[]" context="{'group_by': 'it_request_type'}"/>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>
